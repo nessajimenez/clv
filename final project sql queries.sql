@@ -116,3 +116,25 @@ WITH revenue as (SELECT cust_id,
 SELECT SUM(total_sale)
 FROM revenue
 GROUP BY month;
+
+
+SELECT 
+    cust_id,
+    MIN(date) as first_purchase,
+    MAX(date) as latest_purchase,
+    COUNT(DISTINCT(invoice)) as frequency,
+    SUM(total_price) AS total_spent,
+    DATEDIFF(MAX(date), MIN(date)) AS lifetime_in_days,
+    (SUM(total_price) / COUNT(DISTINCT date)) * 4.4458 AS CV,
+    ((SUM(total_price) / COUNT(DISTINCT date)) * 4.4458) * 134.2622 AS CLV
+FROM sales
+GROUP BY cust_id;
+
+-- looking at total sale and quantity per invoice, per customer
+SELECT cust_id,
+invoice, 
+ROUND(SUM(total_price),2) AS total_sale,
+SUM(quantity) AS total_pieces
+FROM sales
+GROUP BY cust_id, invoice, date
+ORDER BY cust_id;
