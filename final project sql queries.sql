@@ -138,3 +138,51 @@ SUM(quantity) AS total_pieces
 FROM sales
 GROUP BY cust_id, invoice, date
 ORDER BY cust_id;
+
+-- checking that tableau numbers match my sql work
+SELECT product,
+SUM(quantity)
+FROM SALES
+WHERE stockcode = "84077"
+GROUP BY product;
+
+
+SELECT COUNT(DISTINCT(invoice))
+FROM sales
+GROUP BY cust_id;
+
+SELECT COUNT(DISTINCT(cust_id))
+FROM sales;
+
+SELECT COUNT(*)
+FROM (
+    SELECT cust_id
+    FROM sales
+    GROUP BY cust_id
+    HAVING COUNT(DISTINCT invoice) = 2
+) AS subquery;
+
+
+SELECT *
+FROM sales
+WHERE stockcode = '35976B';
+
+SELECT *
+FROM sales
+WHERE invoice = '490512';
+
+SELECT *
+FROM sales
+WHERE cust_id = '14606';
+
+
+SELECT sum(total_price)
+FROM (SELECT *
+		FROM sales
+		WHERE cust_id = '14606') as subquery
+GROUP BY invoice;
+
+
+SELECT *
+FROM returns
+WHERE cust_id = '14606';
