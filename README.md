@@ -36,4 +36,6 @@ This was my final project for the Data Analyst bootcamp at Ironhack. [The slides
 
 I have a background in project management working with small businesses to improve their systems and implementing new and better ways of working. What I have learned in the bootcamp has allowed me to work with raw data directly with allows me to create even better project proposals and plans. 
 
+[Original data set source](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
+
 
